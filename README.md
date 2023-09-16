@@ -11,7 +11,7 @@
 
 The full documentation of the api endpoints are here:
 
-- [Api Deezer Documentation](https://documenter.getpostman.com/view/2s9YC7SWrZ?version=latest#intro)).
+- [Api Deezer Documentation](https://documenter.getpostman.com/view/2s9YC7SWrZ?version=latest#intro).
 
 ## Author
 
