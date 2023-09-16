@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Artist;
+use App\Models\Song;
 
-class ArtistController extends Controller {
+class SongController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Artist::all();
+        return Song::all();
     }
 
     /**
@@ -41,7 +41,7 @@ class ArtistController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Artist::with('songs', 'albums')->findOrFail($id);
+        return Song::with('album', 'artist')->findOrFail($id);
     }
 
     /**
