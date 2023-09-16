@@ -11,11 +11,11 @@
 
 The full documentation of the api endpoints are here:
 
-- [Api Deezer Documentation](https://laravel.com/docs/routing](https://documenter.getpostman.com/view/2s9YC7SWrZ?version=latest#intro)).
+- [Api Deezer Documentation](https://documenter.getpostman.com/view/2s9YC7SWrZ?version=latest#intro)).
 
 ## Author
 
-- [Bruno Díaz]([https://laravel.com/docs/routing](https://documenter.getpostman.com/view/2s9YC7SWrZ?version=latest#intro](https://github.com/bdiazc90))).
+- [Bruno Díaz](https://github.com/bdiazc90).
 
 ## License
 
