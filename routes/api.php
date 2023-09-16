@@ -27,4 +27,5 @@ Route::post('register', [AuthController::class, 'register']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('artists', [ArtistController::class, 'index']);
+    Route::get('albums', [AlbumController::class, 'index']);
 });
