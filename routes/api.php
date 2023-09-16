@@ -31,12 +31,15 @@ Route::middleware('auth:sanctum')->group(function () {
     // Artists:
     Route::get('artists', [ArtistController::class, 'index']);
     Route::get('artist/{id}', [ArtistController::class, 'show']);
+    Route::post('artists', [ArtistController::class, 'store']);
     // Albums:
     Route::get('albums', [AlbumController::class, 'index']);
     Route::get('album/{id}', [AlbumController::class, 'show']);
+    Route::post('albums', [AlbumController::class, 'store']);
     // Songs:
     Route::get('songs', [SongController::class, 'index']);
     Route::get('song/{id}', [SongController::class, 'show']);
+    Route::post('songs', [SongController::class, 'store']);
     // Search:`
     Route::get('search', [SongController::class, 'search']);
 });

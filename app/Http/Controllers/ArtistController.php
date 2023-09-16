@@ -31,7 +31,19 @@ class ArtistController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $validator = validator()->make($request->all(), [
+            'name' => 'required|string|unique:artists|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        $artist = Artist::create([
+            'name' => $request->input('name'),
+        ]);
+
+        return response()->json(['message' => 'Artist created.', 'artist' => $artist]);
     }
 
     /**

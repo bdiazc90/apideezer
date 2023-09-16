@@ -9,6 +9,7 @@ class Album extends Model {
     use HasFactory;
 
     protected $appends = ['type'];
+    protected $fillable = ['title', 'artist_id'];
 
     public function tracks() {
         return $this->hasMany(Song::class);

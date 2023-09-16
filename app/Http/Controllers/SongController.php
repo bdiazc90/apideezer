@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Song;
+use App\Models\Album;
 
 class SongController extends Controller {
     /**
@@ -31,7 +32,27 @@ class SongController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $validator = validator()->make($request->all(), [
+            'title' => 'required|string|max:255',
+            'album_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        // check album:
+        $album = Album::find($request->input('album_id'));
+        if (!$album) {
+            return response()->json(['message' => 'Album not found'], 404);
+        }
+
+        $song = Song::create([
+            'title' => $request->input('title'),
+            'album_id' => $request->input('album_id'),
+        ]);
+
+        return response()->json(['message' => 'Song created.', 'song' => $song]);
     }
 
     /**

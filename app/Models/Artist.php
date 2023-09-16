@@ -9,6 +9,7 @@ class Artist extends Model {
     use HasFactory;
 
     protected $appends = ['type'];
+    protected $fillable = ['name'];
 
     public function songs() {
         return $this->hasManyThrough(Song::class, Album::class);
