@@ -44,6 +44,26 @@ class SongController extends Controller {
         return Song::with('album', 'artist')->findOrFail($id);
     }
 
+    public function search(Request $request) {
+        $searchTerm = $request->query('q');
+        if (!$searchTerm) {
+            return response()->json(['message' => 'Missing search term ?q='], 400);
+        }
+        // search:
+        $songs = Song::whereHas('artist', function ($artist) use ($searchTerm) {
+            $artist->where('name', 'LIKE', '%' . $searchTerm . '%');
+        })->orWhereHas('album', function ($album) use ($searchTerm) {
+            $album->where('title', 'LIKE', '%' . $searchTerm . '%');
+        })->orWhere('title', 'LIKE', '%' . $searchTerm . '%')
+            ->with('album', 'artist')
+            ->get();
+
+        if (!$songs->count()) {
+            return response()->json(['message' => 'Nothing found'], 404);
+        }
+        return $songs;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

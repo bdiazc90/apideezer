@@ -37,4 +37,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Songs:
     Route::get('songs', [SongController::class, 'index']);
     Route::get('song/{id}', [SongController::class, 'show']);
+    // Search:`
+    Route::get('search', [SongController::class, 'search']);
 });
